@@ -11,6 +11,7 @@ app.use(cors());
 app.use('/api/products' , ProductRoutes);
 
 
+//لازم امسح هل روات
 app.get('/' , (req , res) => {
     res.send("hello world")
 })
