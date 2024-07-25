@@ -1,13 +1,14 @@
 import express from "express";
-import { productControllers } from "./product.controller";
 const router = express.Router();
+import { productControllers } from "./product.controller";
+import { verfiyToken } from "../../middleware/authMiddleware";
 
 
-router.get('/' , productControllers.getAllProduct)
-router.post('/' , productControllers.createProduct)
-router.get('/:productId' , productControllers.getSingleProduct)
-router.put('/:productId' , productControllers.updateProduct)
-router.delete('/:productId' , productControllers.deleteProduct)
+router.get('/' ,verfiyToken , productControllers.getAllProduct)
+router.post('/' , verfiyToken ,productControllers.createProduct)
+router.get('/:productId' ,verfiyToken ,  productControllers.getSingleProduct)
+router.put('/:productId' ,verfiyToken , productControllers.updateProduct)
+router.delete('/:productId' ,verfiyToken , productControllers.deleteProduct)
 
 
 export const ProductRoutes = router;
